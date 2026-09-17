@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://q0245xcw7a1"]
+
+[node name="Debug_Display" type="Control" unique_id=727410417]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+
+[node name="Panel" type="Panel" parent="." unique_id=1078756412]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="FPS_Label" type="Label" parent="." unique_id=812244698]
+layout_mode = 0
+anchor_right = 1.0
+text = "FPS: 60"
+
+[node name="OS_Label" type="Label" parent="." unique_id=544798867]
+layout_mode = 0
+anchor_right = 1.0
+text = "OS:Windows"
+
+[node name="Engine_Label" type="Label" parent="." unique_id=17239073]
+layout_mode = 0
+anchor_right = 1.0
+text = "Godot version:"

@@ -1,0 +1,238 @@
+[gd_scene format=3 uid="uid://bh1vqootho8sg"]
+
+[ext_resource type="Texture2D" uid="uid://co8v8wh21j50w" path="res://FPS_project_icon.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://gw0aky41hoek" path="res://assets/Space_Level_Objects/SpaceThumbnail.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://dmjwnu5cc6463" path="res://assets/Ruin_Level_Objects/RuinsThumbnail.png" id="5"]
+
+[sub_resource type="Sky" id="1"]
+radiance_size = 0
+
+[sub_resource type="Environment" id="2"]
+background_mode = 2
+sky = SubResource("1")
+tonemap_mode = 3
+ssao_intensity = 1.0
+glow_enabled = true
+glow_levels/1 = 1.0
+glow_levels/2 = 1.0
+glow_levels/3 = 1.0
+glow_levels/4 = 0.0
+glow_intensity = 1.0
+glow_strength = 1.1
+glow_blend_mode = 0
+
+[sub_resource type="Animation" id="3"]
+resource_name = "Background_Animation"
+length = 9.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main_Menu_Camera:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(40, 40, 40), Vector3(80, 80, 80), Vector3(120, 120, 120), Vector3(160, 160, 160), Vector3(200, 200, 200), Vector3(240, 240, 240), Vector3(280, 280, 280), Vector3(320, 320, 320), Vector3(360, 360, 360)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gtid3"]
+_data = {
+&"Background_Animation": SubResource("3")
+}
+
+[node name="Main_Menu" type="Control" unique_id=1953006701]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background_Animation" type="Node3D" parent="." unique_id=1073327214]
+
+[node name="World_Environment" type="WorldEnvironment" parent="Background_Animation" unique_id=647879827]
+environment = SubResource("2")
+
+[node name="Main_Menu_Camera" type="Camera3D" parent="Background_Animation" unique_id=1309291340]
+transform = Transform3D(1, -1.74846e-07, 1.74846e-07, 1.74846e-07, 1, -1.74846e-07, -1.74846e-07, 1.74846e-07, 1, 0, 0, 0)
+fov = 70.0
+far = 100.0
+
+[node name="Animation_Player" type="AnimationPlayer" parent="Background_Animation" unique_id=1523276013]
+libraries/ = SubResource("AnimationLibrary_gtid3")
+autoplay = &"Background_Animation"
+
+[node name="Start_Menu" type="Panel" parent="." unique_id=1715115023]
+modulate = Color(1, 1, 1, 0.901961)
+layout_mode = 0
+
+[node name="Title_Label" type="Label" parent="Start_Menu" unique_id=1985233269]
+layout_mode = 0
+text = "Godot 3
+FPS Tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_Start" type="Button" parent="Start_Menu" unique_id=1100710321]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Start game"
+
+[node name="Button_Open_Godot" type="Button" parent="Start_Menu" unique_id=899023180]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Open Godot website"
+
+[node name="Button_Options" type="Button" parent="Start_Menu" unique_id=59600754]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Options"
+
+[node name="Button_Quit" type="Button" parent="Start_Menu" unique_id=683342856]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Quit"
+
+[node name="Level_Select_Menu" type="Panel" parent="." unique_id=263878680]
+visible = false
+modulate = Color(1, 1, 1, 0.901961)
+layout_mode = 0
+
+[node name="Title_Label" type="Label" parent="Level_Select_Menu" unique_id=1719715541]
+layout_mode = 0
+text = "Select a level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_Back" type="Button" parent="Level_Select_Menu" unique_id=978251478]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Back"
+
+[node name="Button_Level_Testing_Area" type="Button" parent="Level_Select_Menu" unique_id=1158022018]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+
+[node name="Icon" type="TextureRect" parent="Level_Select_Menu/Button_Level_Testing_Area" unique_id=496604952]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+texture = ExtResource("3")
+expand_mode = 1
+
+[node name="Button_Level_Space" type="Button" parent="Level_Select_Menu" unique_id=1038834659]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+
+[node name="Icon" type="TextureRect" parent="Level_Select_Menu/Button_Level_Space" unique_id=1399029217]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+texture = ExtResource("4")
+expand_mode = 1
+
+[node name="Button_Level_Ruins" type="Button" parent="Level_Select_Menu" unique_id=333185486]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+
+[node name="Icon" type="TextureRect" parent="Level_Select_Menu/Button_Level_Ruins" unique_id=1457778790]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+texture = ExtResource("5")
+expand_mode = 1
+
+[node name="Options_Menu" type="Panel" parent="." unique_id=1226212946]
+visible = false
+modulate = Color(1, 1, 1, 0.901961)
+layout_mode = 0
+
+[node name="Title_Label" type="Label" parent="Options_Menu" unique_id=1388407992]
+layout_mode = 0
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_Mouse_Sensitivity" type="Label" parent="Options_Menu" unique_id=1541869272]
+layout_mode = 0
+text = "Mouse sensitivity"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider_Mouse_Sensitivity" type="HSlider" parent="Options_Menu" unique_id=502688047]
+layout_mode = 0
+min_value = 0.001
+max_value = 0.4
+step = 0.004
+value = 0.009000000000000001
+
+[node name="Label_Joypad_Sensitivity" type="Label" parent="Options_Menu" unique_id=612122363]
+layout_mode = 0
+text = "Joypad sensitivity"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider_Joypad_Sensitivity" type="HSlider" parent="Options_Menu" unique_id=264767227]
+layout_mode = 0
+min_value = 0.1
+max_value = 5.0
+step = 0.1
+value = 0.1
+
+[node name="Check_Button_VSync" type="CheckButton" parent="Options_Menu" unique_id=530169840]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "V-Sync"
+
+[node name="Button_Fullscreen" type="Button" parent="Options_Menu" unique_id=37551039]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Fullscreen"
+
+[node name="Check_Button_Debug" type="CheckButton" parent="Options_Menu" unique_id=962987224]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Debug display"
+
+[node name="Button_Back" type="Button" parent="Options_Menu" unique_id=648732497]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Back"
